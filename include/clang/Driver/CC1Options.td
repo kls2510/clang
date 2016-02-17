@@ -265,7 +265,7 @@ def fsanitize_coverage_trace_cmp
 def fsanitize_coverage_8bit_counters
     : Flag<["-"], "fsanitize-coverage-8bit-counters">,
       HelpText<"Enable frequency counters in sanitizer coverage">;
-
+	
 //===----------------------------------------------------------------------===//
 // Dependency Output Options
 //===----------------------------------------------------------------------===//

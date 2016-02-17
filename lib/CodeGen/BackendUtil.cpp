@@ -237,6 +237,11 @@ static void addDataFlowSanitizerPass(const PassManagerBuilder &Builder,
   PM.add(createDataFlowSanitizerPass(LangOpts.SanitizerBlacklistFiles));
 }
 
+
+static void addParallelizationPass(const PassManagerBuilder &Builder, PassManagerBase &PM) {
+	PM.add(createParallelizationPass());
+}
+
 static TargetLibraryInfoImpl *createTLII(llvm::Triple &TargetTriple,
                                          const CodeGenOptions &CodeGenOpts) {
   TargetLibraryInfoImpl *TLII = new TargetLibraryInfoImpl(TargetTriple);
@@ -285,6 +290,8 @@ void EmitAssemblyHelper::CreatePasses() {
   PMBuilder.SLPVectorize = CodeGenOpts.VectorizeSLP;
   PMBuilder.LoopVectorize = CodeGenOpts.VectorizeLoop;
 
+  PMBuilder.LoopParallelize = CodeGenOpts.ParallelizeLoop;
+
   PMBuilder.DisableUnitAtATime = !CodeGenOpts.UnitAtATime;
   PMBuilder.DisableUnrollLoops = !CodeGenOpts.UnrollLoops;
   PMBuilder.MergeFunctions = CodeGenOpts.MergeFunctions;
@@ -318,6 +325,13 @@ void EmitAssemblyHelper::CreatePasses() {
                            addSanitizerCoveragePass);
     PMBuilder.addExtension(PassManagerBuilder::EP_EnabledOnOptLevel0,
                            addSanitizerCoveragePass);
+  }
+
+  if (CodeGenOpts.ParallelizeLoop) {
+	  PMBuilder.addExtension(PassManagerBuilder::EP_OptimizerLast,
+		  addParallelizationPass);
+	  PMBuilder.addExtension(PassManagerBuilder::EP_EnabledOnOptLevel0,
+		  addParallelizationPass);
   }
 
   if (LangOpts.Sanitize.has(SanitizerKind::Address)) {

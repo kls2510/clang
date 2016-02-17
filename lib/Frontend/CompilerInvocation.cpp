@@ -510,6 +510,8 @@ static bool ParseCodeGenArgs(CodeGenOptions &Opts, ArgList &Args, InputKind IK,
   Opts.VectorizeLoop = Args.hasArg(OPT_vectorize_loops);
   Opts.VectorizeSLP = Args.hasArg(OPT_vectorize_slp);
 
+  Opts.ParallelizeLoop = Args.hasArg(OPT_parallelize_loops);
+
   Opts.MainFileName = Args.getLastArgValue(OPT_main_file_name);
   Opts.VerifyModule = !Args.hasArg(OPT_disable_llvm_verifier);
 

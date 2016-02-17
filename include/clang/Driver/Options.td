@@ -131,6 +131,9 @@ def internal_debug_Group :
   OptionGroup<"<clang debug/development internal options>">,
   Group<internal_Group>, HelpText<"DEBUG/DEVELOPMENT OPTIONS">;
 
+def parallelize_loops : Flag<["-","parallelize-loops">, Flags<[CC1Option]>,
+	HelpText<"Enables automatic loop detection and parallelization across multiple threads">;	
+  
 class InternalDriverOpt : Group<internal_driver_Group>,
   Flags<[DriverOption, HelpHidden]>;
 def driver_mode : Joined<["--"], "driver-mode=">, Group<internal_driver_Group>,

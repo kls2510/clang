@@ -3495,6 +3495,9 @@ void Clang::ConstructJob(Compilation &C, const JobAction &JA,
                     options::OPT_fno_optimize_sibling_calls))
     CmdArgs.push_back("-mdisable-tail-calls");
 
+  if (Args.hasArg(options::OPT_parallelize_loops))
+	  CmdArgs.push_back("-parallelize-loops");
+
   // Handle segmented stacks.
   if (Args.hasArg(options::OPT_fsplit_stack))
     CmdArgs.push_back("-split-stacks");
