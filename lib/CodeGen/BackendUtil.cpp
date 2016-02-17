@@ -41,7 +41,7 @@
 #include "llvm/Transforms/ObjCARC.h"
 #include "llvm/Transforms/Scalar.h"
 #include "llvm/Transforms/Utils/SymbolRewriter.h"
-#include "llvm/ParallelLoopPasses/LoopDependencyData.h"
+#include "llvm/ParallelLoopPasses/IsParallelizableLoopPass.h"
 #include <memory>
 using namespace clang;
 using namespace llvm;
