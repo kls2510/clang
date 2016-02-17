@@ -45,6 +45,7 @@
 #include <memory>
 using namespace clang;
 using namespace llvm;
+using namespace parallelize;
 
 namespace {
 
