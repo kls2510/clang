@@ -241,6 +241,7 @@ static void addDataFlowSanitizerPass(const PassManagerBuilder &Builder,
 
 
 static void addParallelizationPass(const PassManagerBuilder &Builder, PassManagerBase &PM) {
+	PM.add(parallelize::createAnalysisParallelizationPass());
 	PM.add(parallelize::createParallelizationPass());
 }
 
