@@ -41,6 +41,7 @@
 #include "llvm/Transforms/ObjCARC.h"
 #include "llvm/Transforms/Scalar.h"
 #include "llvm/Transforms/Utils/SymbolRewriter.h"
+#include "llvm/ParallelLoopPasses/LoopDependencyData.h"
 #include <memory>
 using namespace clang;
 using namespace llvm;
@@ -239,7 +240,7 @@ static void addDataFlowSanitizerPass(const PassManagerBuilder &Builder,
 
 
 static void addParallelizationPass(const PassManagerBuilder &Builder, PassManagerBase &PM) {
-	PM.add(createParallelizationPass());
+	PM.add(parallelize::createParallelizationPass());
 }
 
 static TargetLibraryInfoImpl *createTLII(llvm::Triple &TargetTriple,
