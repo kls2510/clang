@@ -42,6 +42,8 @@
 #include "llvm/Support/Program.h"
 #include "llvm/Support/raw_ostream.h"
 #include "llvm/Support/TargetParser.h"
+//TEMP
+#include <iostream>
 
 #ifdef LLVM_ON_UNIX
 #include <unistd.h> // For getuid().
