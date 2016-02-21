@@ -2920,7 +2920,7 @@ FreeBSD::FreeBSD(const Driver &D, const llvm::Triple &Triple,
 
   //link library for calling threads if parallel loop pass is called
   if (Args.hasArg(options::OPT_parallelize_loops))) {
-    cerr << "LINK .SO HERE\n";
+    std::cout << "LINK .SO HERE\n";
 
   }
 }
