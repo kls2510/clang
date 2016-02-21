@@ -35,6 +35,8 @@
 #include "llvm/Support/raw_ostream.h"
 #include <cstdlib> // ::getenv
 #include <system_error>
+//TEMP
+#include <stdio>
 
 using namespace clang::driver;
 using namespace clang::driver::toolchains;
