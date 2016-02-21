@@ -2917,6 +2917,12 @@ FreeBSD::FreeBSD(const Driver &D, const llvm::Triple &Triple,
     getFilePaths().push_back(getDriver().SysRoot + "/usr/lib32");
   else
     getFilePaths().push_back(getDriver().SysRoot + "/usr/lib");
+
+  //link library for calling threads if parallel loop pass is called
+  if (Args.hasArg(options::OPT_parallelize_loops))) {
+    cerr << "LINK .SO HERE\n";
+
+  }
 }
 
 ToolChain::CXXStdlibType FreeBSD::GetCXXStdlibType(const ArgList &Args) const {
