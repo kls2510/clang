@@ -7536,6 +7536,12 @@ void freebsd::Linker::ConstructJob(Compilation &C, const JobAction &JA,
   if (IsPIE)
     CmdArgs.push_back("-pie");
 
+  //link library for calling threads if parallel loop pass is called
+  if (Args.hasArg(options::OPT_parallelize_loops)) {
+	  std::cout << "LINK .SO HERE\n";
+	  CmdArgs.push_back("-libthreading");
+  }
+
   if (Args.hasArg(options::OPT_static)) {
     CmdArgs.push_back("-Bstatic");
   } else {

@@ -2920,11 +2920,12 @@ FreeBSD::FreeBSD(const Driver &D, const llvm::Triple &Triple,
   else
     getFilePaths().push_back(getDriver().SysRoot + "/usr/lib");
 
-  //link library for calling threads if parallel loop pass is called
   if (Args.hasArg(options::OPT_parallelize_loops)) {
-    std::cout << "LINK .SO HERE\n";
-
+	  std::cout << "INCLUDE .SO PATH HERE\n";
+	  //include
+	  getFilePaths().push_back(getDriver().SysRoot + "/home/kls82/lib");
   }
+
 }
 
 ToolChain::CXXStdlibType FreeBSD::GetCXXStdlibType(const ArgList &Args) const {
