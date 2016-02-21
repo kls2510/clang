@@ -36,7 +36,7 @@
 #include <cstdlib> // ::getenv
 #include <system_error>
 //TEMP
-#include <stdio>
+#include <iostream>
 
 using namespace clang::driver;
 using namespace clang::driver::toolchains;
