@@ -2919,7 +2919,7 @@ FreeBSD::FreeBSD(const Driver &D, const llvm::Triple &Triple,
     getFilePaths().push_back(getDriver().SysRoot + "/usr/lib");
 
   //link library for calling threads if parallel loop pass is called
-  if (Args.hasArg(options::OPT_parallelize_loops))) {
+  if (Args.hasArg(options::OPT_parallelize_loops)) {
     std::cout << "LINK .SO HERE\n";
 
   }
