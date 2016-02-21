@@ -35,8 +35,6 @@
 #include "llvm/Support/raw_ostream.h"
 #include <cstdlib> // ::getenv
 #include <system_error>
-//TEMP
-#include <iostream>
 
 using namespace clang::driver;
 using namespace clang::driver::toolchains;
@@ -2921,7 +2919,6 @@ FreeBSD::FreeBSD(const Driver &D, const llvm::Triple &Triple,
     getFilePaths().push_back(getDriver().SysRoot + "/usr/lib");
 
   if (Args.hasArg(options::OPT_parallelize_loops)) {
-	  std::cout << "INCLUDE .SO PATH HERE\n";
 	  //include
 	  getFilePaths().push_back(getDriver().SysRoot + "/home/kls82/lib");
   }

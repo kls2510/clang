@@ -42,8 +42,6 @@
 #include "llvm/Support/Program.h"
 #include "llvm/Support/raw_ostream.h"
 #include "llvm/Support/TargetParser.h"
-//TEMP
-#include <iostream>
 
 #ifdef LLVM_ON_UNIX
 #include <unistd.h> // For getuid().
@@ -7540,7 +7538,6 @@ void freebsd::Linker::ConstructJob(Compilation &C, const JobAction &JA,
 
   //link library for calling threads if parallel loop pass is called
   if (Args.hasArg(options::OPT_parallelize_loops)) {
-	  std::cout << "LINK .SO HERE\n";
 	  CmdArgs.push_back("-lthreading");
   }
 
