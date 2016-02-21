@@ -12,6 +12,7 @@ set(LLVM_LINK_COMPONENTS
   ObjCARCOpts
   Object
   ProfileData
+  ParallelLoopPasses
   ScalarOpts
   Support
   Target

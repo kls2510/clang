@@ -241,7 +241,6 @@ static void addDataFlowSanitizerPass(const PassManagerBuilder &Builder,
 
 
 static void addParallelizationPass(const PassManagerBuilder &Builder, PassManagerBase &PM) {
-	PM.add(parallelize::createAnalysisParallelizationPass());
 	PM.add(parallelize::createParallelizationPass());
 }
 
@@ -329,6 +328,9 @@ void EmitAssemblyHelper::CreatePasses() {
   }
 
   if (CodeGenOpts.ParallelizeLoop) {
+	initializeIsParallelizableLoopPassPass(*PassRegistry::getPassRegistry());
+	initializeLoopExtractionPassPass(*PassRegistry::getPassRegistry());
+
 	  PMBuilder.addExtension(PassManagerBuilder::EP_OptimizerLast,
 		  addParallelizationPass);
 	  PMBuilder.addExtension(PassManagerBuilder::EP_EnabledOnOptLevel0,
